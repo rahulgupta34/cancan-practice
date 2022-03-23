@@ -1,0 +1,21 @@
+<p>
+<strong>email</strong>: <%= current_user.email %>
+</p>
+<p style="color: green"><%= notice %></p>
+<% if flash[:comment] %>
+   <%= flash[:comment] %>
+<% end %>
+
+<h1>Posts</h1>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+    <p>
+    <% if can? :read, post %>
+      <%= link_to "Show this post", post %>
+    <% end %>
+    </p>
+  <% end %>
+</div>
+
